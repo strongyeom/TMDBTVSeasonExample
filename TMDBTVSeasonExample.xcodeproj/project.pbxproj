@@ -13,6 +13,16 @@
 		263B9B552A8E285600E81F3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 263B9B532A8E285600E81F3A /* Main.storyboard */; };
 		263B9B572A8E285800E81F3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 263B9B562A8E285800E81F3A /* Assets.xcassets */; };
 		263B9B5A2A8E285800E81F3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 263B9B582A8E285800E81F3A /* LaunchScreen.storyboard */; };
+		263B9B632A8E289200E81F3A /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263B9B612A8E289200E81F3A /* CollectionViewCell.swift */; };
+		263B9B642A8E289200E81F3A /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 263B9B622A8E289200E81F3A /* CollectionViewCell.xib */; };
+		263B9B672A8E28F100E81F3A /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263B9B652A8E28F100E81F3A /* HeaderCollectionReusableView.swift */; };
+		263B9B682A8E28F100E81F3A /* HeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 263B9B662A8E28F100E81F3A /* HeaderCollectionReusableView.xib */; };
+		263B9B6A2A8E295C00E81F3A /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263B9B692A8E295C00E81F3A /* ReusableProtocol.swift */; };
+		263B9B6C2A8E2A9E00E81F3A /* WitcherEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263B9B6B2A8E2A9E00E81F3A /* WitcherEpisode.swift */; };
+		263B9B6E2A8E2AFE00E81F3A /* WitcherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263B9B6D2A8E2AFE00E81F3A /* WitcherManager.swift */; };
+		263B9B712A8E2B2100E81F3A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 263B9B702A8E2B2100E81F3A /* Alamofire */; };
+		263B9B742A8E2B2B00E81F3A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 263B9B732A8E2B2B00E81F3A /* Kingfisher */; };
+		263B9B762A8E2B7C00E81F3A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 263B9B752A8E2B7C00E81F3A /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +34,14 @@
 		263B9B562A8E285800E81F3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		263B9B592A8E285800E81F3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		263B9B5B2A8E285800E81F3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		263B9B612A8E289200E81F3A /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		263B9B622A8E289200E81F3A /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		263B9B652A8E28F100E81F3A /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		263B9B662A8E28F100E81F3A /* HeaderCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCollectionReusableView.xib; sourceTree = "<group>"; };
+		263B9B692A8E295C00E81F3A /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
+		263B9B6B2A8E2A9E00E81F3A /* WitcherEpisode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WitcherEpisode.swift; sourceTree = "<group>"; };
+		263B9B6D2A8E2AFE00E81F3A /* WitcherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WitcherManager.swift; sourceTree = "<group>"; };
+		263B9B752A8E2B7C00E81F3A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +49,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				263B9B742A8E2B2B00E81F3A /* Kingfisher in Frameworks */,
+				263B9B712A8E2B2100E81F3A /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +83,14 @@
 				263B9B562A8E285800E81F3A /* Assets.xcassets */,
 				263B9B582A8E285800E81F3A /* LaunchScreen.storyboard */,
 				263B9B5B2A8E285800E81F3A /* Info.plist */,
+				263B9B612A8E289200E81F3A /* CollectionViewCell.swift */,
+				263B9B622A8E289200E81F3A /* CollectionViewCell.xib */,
+				263B9B652A8E28F100E81F3A /* HeaderCollectionReusableView.swift */,
+				263B9B662A8E28F100E81F3A /* HeaderCollectionReusableView.xib */,
+				263B9B692A8E295C00E81F3A /* ReusableProtocol.swift */,
+				263B9B6B2A8E2A9E00E81F3A /* WitcherEpisode.swift */,
+				263B9B6D2A8E2AFE00E81F3A /* WitcherManager.swift */,
+				263B9B752A8E2B7C00E81F3A /* .gitignore */,
 			);
 			path = TMDBTVSeasonExample;
 			sourceTree = "<group>";
@@ -83,6 +111,10 @@
 			dependencies = (
 			);
 			name = TMDBTVSeasonExample;
+			packageProductDependencies = (
+				263B9B702A8E2B2100E81F3A /* Alamofire */,
+				263B9B732A8E2B2B00E81F3A /* Kingfisher */,
+			);
 			productName = TMDBTVSeasonExample;
 			productReference = 263B9B4A2A8E285600E81F3A /* TMDBTVSeasonExample.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +143,10 @@
 				Base,
 			);
 			mainGroup = 263B9B412A8E285600E81F3A;
+			packageReferences = (
+				263B9B6F2A8E2B2100E81F3A /* XCRemoteSwiftPackageReference "Alamofire" */,
+				263B9B722A8E2B2B00E81F3A /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 263B9B4B2A8E285600E81F3A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,7 +162,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				263B9B5A2A8E285800E81F3A /* LaunchScreen.storyboard in Resources */,
+				263B9B682A8E28F100E81F3A /* HeaderCollectionReusableView.xib in Resources */,
 				263B9B572A8E285800E81F3A /* Assets.xcassets in Resources */,
+				263B9B642A8E289200E81F3A /* CollectionViewCell.xib in Resources */,
+				263B9B762A8E2B7C00E81F3A /* .gitignore in Resources */,
 				263B9B552A8E285600E81F3A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,8 +177,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				263B9B6E2A8E2AFE00E81F3A /* WitcherManager.swift in Sources */,
 				263B9B522A8E285600E81F3A /* ViewController.swift in Sources */,
 				263B9B4E2A8E285600E81F3A /* AppDelegate.swift in Sources */,
+				263B9B6C2A8E2A9E00E81F3A /* WitcherEpisode.swift in Sources */,
+				263B9B6A2A8E295C00E81F3A /* ReusableProtocol.swift in Sources */,
+				263B9B632A8E289200E81F3A /* CollectionViewCell.swift in Sources */,
+				263B9B672A8E28F100E81F3A /* HeaderCollectionReusableView.swift in Sources */,
 				263B9B502A8E285600E81F3A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -356,6 +400,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		263B9B6F2A8E2B2100E81F3A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		263B9B722A8E2B2B00E81F3A /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		263B9B702A8E2B2100E81F3A /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 263B9B6F2A8E2B2100E81F3A /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		263B9B732A8E2B2B00E81F3A /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 263B9B722A8E2B2B00E81F3A /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 263B9B422A8E285600E81F3A /* Project object */;
 }
