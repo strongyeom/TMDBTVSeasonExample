@@ -12,11 +12,38 @@ class WitcherManager {
     static let shared = WitcherManager()
     private init() {}
     
-    let url = "https://api.themoviedb.org/3/tv/71912/season/1/episode/3?api_key=c281c6340f1417f667c6239240196cbf&language=ko"
-    func callRequest() {
+
+    
+    func callRequest(episode: Int, completionHandler: @escaping(WitcherEpisode) -> Void) {
+       
+        let url = "https://api.themoviedb.org/3/tv/71912/season/1/episode/\(episode)?api_key=\(APIKey.tmdbKey)&language=ko"
+        
         AF.request(url).validate()
-            .responseDecodable(of: <#T##Decodable.Protocol#>) { <#DataResponse<Decodable, AFError>#> in
-                <#code#>
+            .responseDecodable(of: WitcherEpisode.self) { response in
+                guard let response = response.value else { return }
+                completionHandler(response)
+            }
+    }
+    
+    func callTwoRequest(episode: Int, completionHandler: @escaping(WitcherEpisode) -> Void) {
+       
+        let url = "https://api.themoviedb.org/3/tv/71912/season/2/episode/\(episode)?api_key=\(APIKey.tmdbKey)&language=ko"
+        
+        AF.request(url).validate()
+            .responseDecodable(of: WitcherEpisode.self) { response in
+                guard let response = response.value else { return }
+                completionHandler(response)
+            }
+    }
+    
+    func callThreeRequest(episode: Int, completionHandler: @escaping(WitcherEpisode) -> Void) {
+       
+        let url = "https://api.themoviedb.org/3/tv/71912/season/3/episode/\(episode)?api_key=\(APIKey.tmdbKey)&language=ko"
+        
+        AF.request(url).validate()
+            .responseDecodable(of: WitcherEpisode.self) { response in
+                guard let response = response.value else { return }
+                completionHandler(response)
             }
     }
     

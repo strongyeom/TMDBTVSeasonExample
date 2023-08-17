@@ -23,6 +23,7 @@
 		263B9B712A8E2B2100E81F3A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 263B9B702A8E2B2100E81F3A /* Alamofire */; };
 		263B9B742A8E2B2B00E81F3A /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 263B9B732A8E2B2B00E81F3A /* Kingfisher */; };
 		263B9B762A8E2B7C00E81F3A /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 263B9B752A8E2B7C00E81F3A /* .gitignore */; };
+		263B9B782A8E2BD000E81F3A /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263B9B772A8E2BD000E81F3A /* APIKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		263B9B6B2A8E2A9E00E81F3A /* WitcherEpisode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WitcherEpisode.swift; sourceTree = "<group>"; };
 		263B9B6D2A8E2AFE00E81F3A /* WitcherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WitcherManager.swift; sourceTree = "<group>"; };
 		263B9B752A8E2B7C00E81F3A /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		263B9B772A8E2BD000E81F3A /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				263B9B692A8E295C00E81F3A /* ReusableProtocol.swift */,
 				263B9B6B2A8E2A9E00E81F3A /* WitcherEpisode.swift */,
 				263B9B6D2A8E2AFE00E81F3A /* WitcherManager.swift */,
+				263B9B772A8E2BD000E81F3A /* APIKey.swift */,
 				263B9B752A8E2B7C00E81F3A /* .gitignore */,
 			);
 			path = TMDBTVSeasonExample;
@@ -184,6 +187,7 @@
 				263B9B6A2A8E295C00E81F3A /* ReusableProtocol.swift in Sources */,
 				263B9B632A8E289200E81F3A /* CollectionViewCell.swift in Sources */,
 				263B9B672A8E28F100E81F3A /* HeaderCollectionReusableView.swift in Sources */,
+				263B9B782A8E2BD000E81F3A /* APIKey.swift in Sources */,
 				263B9B502A8E285600E81F3A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

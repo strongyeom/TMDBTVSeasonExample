@@ -6,16 +6,105 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ViewController: UIViewController {
     
     @IBOutlet var tmdbCollectionView: UICollectionView!
     
-
+    var witchEpList: [WitcherEpisode] = []
+    var seasonWitchEpList: [[WitcherEpisode]] = []
+    var season: Int = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSetup()
         settingCollectionViewFlowLayout()
+        
+        callrequest(episode: 1) { response in
+            self.witchEpList.append(response)
+            self.callrequest(episode: 2) { response in
+                self.witchEpList.append(response)
+                self.callrequest(episode: 3) { response in
+                    self.witchEpList.append(response)
+                    self.callrequest(episode: 4) { response in
+                        self.witchEpList.append(response)
+                        self.callrequest(episode: 5) { response in
+                            self.witchEpList.append(response)
+                            self.callrequest(episode: 6) { response in
+                                self.witchEpList.append(response)
+                                self.callrequest(episode: 7) { response in
+                                    self.witchEpList.append(response)
+                                    self.callrequest(episode: 8) { response in
+                                        self.witchEpList.append(response)
+                                        self.seasonWitchEpList.append(self.witchEpList)
+                                        self.witchEpList.removeAll()
+                                        self.callTworequest(episode: 1) { response in
+                                            self.witchEpList.append(response)
+                                            self.callTworequest(episode: 2) { response in
+                                                self.witchEpList.append(response)
+                                                self.callTworequest(episode: 3) { response in
+                                                    self.witchEpList.append(response)
+                                                    self.callTworequest(episode: 4) { response in
+                                                        self.witchEpList.append(response)
+                                                        self.callTworequest(episode: 5) { response in
+                                                            self.witchEpList.append(response)
+                                                            self.callTworequest(episode: 6) { response in
+                                                                self.witchEpList.append(response)
+                                                                self.callTworequest(episode: 7) { response in
+                                                                    self.witchEpList.append(response)
+                                                                    self.callTworequest(episode: 8) { response in
+                                                                        self.witchEpList.append(response)
+                                                                        self.seasonWitchEpList.append(self.witchEpList)
+                                                                        self.witchEpList.removeAll()
+                                                                        self.callThreerequest(episode: 1) { response in
+                                                                            self.witchEpList.append(response)
+                                                                            self.callThreerequest(episode: 2) { response in
+                                                                                self.witchEpList.append(response)
+                                                                                self.callThreerequest(episode: 3) { response in
+                                                                                    self.witchEpList.append(response)
+                                                                                    self.callThreerequest(episode: 4) { response in
+                                                                                        self.witchEpList.append(response)
+                                                                                        self.callThreerequest(episode: 5) { response in
+                                                                                            self.witchEpList.append(response)
+                                                                                            self.callThreerequest(episode: 6) { response in
+                                                                                                self.witchEpList.append(response)
+                                                                                                self.callThreerequest(episode: 7) { response in
+                                                                                                    self.witchEpList.append(response)
+                                                                                                    self.callThreerequest(episode: 8) { response in
+                                                                                                        self.witchEpList.append(response)
+                                                                                                        self.seasonWitchEpList.append(self.witchEpList)
+                                                                                                        self.witchEpList.removeAll()
+                                                                                                        print("seasonWitchEpList[0]",self.seasonWitchEpList[0].count)
+                                                                                                        print("seasonWitchEpList[1]",self.seasonWitchEpList[1].count)
+                                                                                                        print("seasonWitchEpList[2]",self.seasonWitchEpList[2].count)
+                                                                                                        self.tmdbCollectionView.reloadData()
+                                                                                                    }
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+       
+        
     }
     
     func configureSetup() {
@@ -30,10 +119,44 @@ class ViewController: UIViewController {
     }
     
     func settingCollectionViewFlowLayout() {
-        
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        let spacing: CGFloat = 5
+        let width = UIScreen.main.bounds.width
+        layout.itemSize = CGSize(width: width / 4, height: width / 3)
+        layout.minimumLineSpacing = spacing
+        layout.minimumInteritemSpacing = spacing
+        layout.sectionInset = UIEdgeInsets(top: spacing, left: 0, bottom: spacing, right: 0)
+        layout.headerReferenceSize = CGSize(width: 300, height: 50)
+        tmdbCollectionView.collectionViewLayout = layout
     }
-
-
+    
+    func callrequest(episode: Int, completionHandler: @escaping (WitcherEpisode) -> Void ) {
+        WitcherManager.shared.callRequest(episode: episode) { response in
+            print("위치 시즌 1 에피 1 : \(self.witchEpList)")
+           
+            completionHandler(response)
+            self.tmdbCollectionView.reloadData()
+        }
+    }
+    
+    func callTworequest(episode: Int, completionHandler: @escaping (WitcherEpisode) -> Void ) {
+        WitcherManager.shared.callTwoRequest(episode: episode) { response in
+            print("위치 시즌 2 : \(self.witchEpList)")
+            completionHandler(response)
+            self.tmdbCollectionView.reloadData()
+        }
+    }
+    
+    func callThreerequest(episode: Int, completionHandler: @escaping (WitcherEpisode) -> Void ) {
+        WitcherManager.shared.callThreeRequest(episode: episode) { response in
+            print("위치 시즌 3 : \(self.witchEpList)")
+            completionHandler(response)
+            self.tmdbCollectionView.reloadData()
+        }
+    }
+    
+    
 }
 
 extension ViewController : UICollectionViewDelegate {
@@ -41,15 +164,71 @@ extension ViewController : UICollectionViewDelegate {
 }
 
 extension ViewController : UICollectionViewDataSource {
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        <#code#>
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
+        if seasonWitchEpList.count > 0 {
+                    switch section {
+                    case 0:
+                        print("seasonWitchEpList[0].count",seasonWitchEpList[0].count)
+                        return seasonWitchEpList[0].count
+//                    case 1:
+//                        print("seasonWitchEpList[0].count",seasonWitchEpList[1].count)
+//                        return seasonWitchEpList[1].count
+//                    case 2:
+//                        print("seasonWitchEpList[0].count",seasonWitchEpList[2].count)
+//                        return seasonWitchEpList[2].count
+                    default:
+                        return 0
+                    }
+        }
+//        print("seasonWitchEpList",self.seasonWitchEpList[0].count)
+//        print("seasonWitchEpList",self.seasonWitchEpList[1].count)
+//        print("seasonWitchEpList",self.seasonWitchEpList[2].count)
+       // print("seasonWitchEpList[0]",seasonWitchEpList[0].count)
+        // print("!23")
+//        switch section {
+//        case 0:
+//            print("seasonWitchEpList[0].count",seasonWitchEpList[0].count)
+//            return seasonWitchEpList[0].count
+//        case 1:
+//            print("seasonWitchEpList[0].count",seasonWitchEpList[1].count)
+//            return seasonWitchEpList[1].count
+//        case 2:
+//            print("seasonWitchEpList[0].count",seasonWitchEpList[2].count)
+//            return seasonWitchEpList[2].count
+//        default:
+//            return 0
+//        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
+        let item = seasonWitchEpList[indexPath.section]
+        if seasonWitchEpList.count > 0 {
+            switch indexPath.section {
+            case 0:
+                let item = seasonWitchEpList[indexPath.section][indexPath.row]
+                let url = URL(string: "https://www.themoviedb.org/t/p/w440_and_h660_face"+item.stillPath)!
+                cell.imageView.kf.setImage(with: url)
+            case 1:
+                let item = seasonWitchEpList[indexPath.section][indexPath.row]
+                let url = URL(string: "https://www.themoviedb.org/t/p/w440_and_h660_face"+item.stillPath)!
+                cell.imageView.kf.setImage(with: url)
+            case 2:
+                let item = seasonWitchEpList[indexPath.section][indexPath.row]
+                let url = URL(string: "https://www.themoviedb.org/t/p/w440_and_h660_face"+item.stillPath)!
+                cell.imageView.kf.setImage(with: url)
+            default:
+                return UICollectionViewCell()
+            }
+        }
+//        let url = URL(string: "https://www.themoviedb.org/t/p/w440_and_h660_face"+item.stillPath)!
+//        cell.imageView.kf.setImage(with: url)
+        return cell
     }
 }
