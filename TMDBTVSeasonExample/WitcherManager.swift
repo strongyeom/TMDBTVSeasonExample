@@ -14,10 +14,9 @@ class WitcherManager {
     
 
     
-    func callRequest(episode: Int, completionHandler: @escaping(WitcherEpisode) -> Void) {
+    func callRequest(season: Int, episode: Int, completionHandler: @escaping(WitcherEpisode) -> Void) {
        
-        let url = "https://api.themoviedb.org/3/tv/71912/season/1/episode/\(episode)?api_key=\(APIKey.tmdbKey)&language=ko"
-        
+        let url = "https://api.themoviedb.org/3/tv/71912/season/\(season)/episode/\(episode)?api_key=\(APIKey.tmdbKey)&language=ko"
         AF.request(url).validate()
             .responseDecodable(of: WitcherEpisode.self) { response in
                 guard let response = response.value else { return }
