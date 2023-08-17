@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewDidLoad")
         configureSetup()
         settingCollectionViewFlowLayout()
         
@@ -122,12 +123,12 @@ class ViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         let spacing: CGFloat = 5
-        let width = UIScreen.main.bounds.width
-        layout.itemSize = CGSize(width: width / 4, height: width / 3)
+        let width = UIScreen.main.bounds.width - (spacing * 4)
+        layout.itemSize = CGSize(width: width / 3, height: width / 3)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
-        layout.sectionInset = UIEdgeInsets(top: spacing, left: 0, bottom: spacing, right: 0)
-        layout.headerReferenceSize = CGSize(width: 300, height: 50)
+        layout.sectionInset = UIEdgeInsets(top: spacing, left:spacing, bottom: spacing, right: spacing)
+        layout.headerReferenceSize = CGSize(width: 300, height: 40)
         tmdbCollectionView.collectionViewLayout = layout
     }
     
@@ -166,69 +167,66 @@ extension ViewController : UICollectionViewDelegate {
 extension ViewController : UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        print("numberOfSections")
         return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if seasonWitchEpList.count > 0 {
+        print("numberOfItemsInSection")
+        if seasonWitchEpList.count > 2 {
                     switch section {
                     case 0:
                         print("seasonWitchEpList[0].count",seasonWitchEpList[0].count)
                         return seasonWitchEpList[0].count
-//                    case 1:
-//                        print("seasonWitchEpList[0].count",seasonWitchEpList[1].count)
-//                        return seasonWitchEpList[1].count
-//                    case 2:
-//                        print("seasonWitchEpList[0].count",seasonWitchEpList[2].count)
-//                        return seasonWitchEpList[2].count
+                    case 1:
+                        print("seasonWitchEpList[0].count",seasonWitchEpList[1].count)
+                        return seasonWitchEpList[1].count
+                    case 2:
+                        print("seasonWitchEpList[0].count",seasonWitchEpList[2].count)
+                        return seasonWitchEpList[2].count
                     default:
                         return 0
                     }
         }
-//        print("seasonWitchEpList",self.seasonWitchEpList[0].count)
-//        print("seasonWitchEpList",self.seasonWitchEpList[1].count)
-//        print("seasonWitchEpList",self.seasonWitchEpList[2].count)
-       // print("seasonWitchEpList[0]",seasonWitchEpList[0].count)
-        // print("!23")
-//        switch section {
-//        case 0:
-//            print("seasonWitchEpList[0].count",seasonWitchEpList[0].count)
-//            return seasonWitchEpList[0].count
-//        case 1:
-//            print("seasonWitchEpList[0].count",seasonWitchEpList[1].count)
-//            return seasonWitchEpList[1].count
-//        case 2:
-//            print("seasonWitchEpList[0].count",seasonWitchEpList[2].count)
-//            return seasonWitchEpList[2].count
-//        default:
-//            return 0
-//        }
         return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
         let item = seasonWitchEpList[indexPath.section]
+        print("cellForItemAt")
         if seasonWitchEpList.count > 0 {
             switch indexPath.section {
             case 0:
                 let item = seasonWitchEpList[indexPath.section][indexPath.row]
                 let url = URL(string: "https://www.themoviedb.org/t/p/w440_and_h660_face"+item.stillPath)!
                 cell.imageView.kf.setImage(with: url)
+                cell.maintitle.text = item.name
             case 1:
                 let item = seasonWitchEpList[indexPath.section][indexPath.row]
                 let url = URL(string: "https://www.themoviedb.org/t/p/w440_and_h660_face"+item.stillPath)!
                 cell.imageView.kf.setImage(with: url)
+                cell.maintitle.text = item.name
             case 2:
                 let item = seasonWitchEpList[indexPath.section][indexPath.row]
                 let url = URL(string: "https://www.themoviedb.org/t/p/w440_and_h660_face"+item.stillPath)!
                 cell.imageView.kf.setImage(with: url)
+                cell.maintitle.text = item.name
             default:
                 return UICollectionViewCell()
             }
         }
-//        let url = URL(string: "https://www.themoviedb.org/t/p/w440_and_h660_face"+item.stillPath)!
-//        cell.imageView.kf.setImage(with: url)
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCollectionReusableView.identifier, for: indexPath) as? HeaderCollectionReusableView else { return UICollectionReusableView() }
+            header.titleLabel.text = "시즌 \(indexPath.section + 1)"
+            return header
+        } else {
+            return UICollectionReusableView()
+        }
+    }
+    
 }
