@@ -23,92 +23,7 @@ class ViewController: UIViewController {
         print("viewDidLoad")
         configureSetup()
         settingCollectionViewFlowLayout()
-        
-//        callrequest(episode: 1) { response in
-//            self.witchEpList.append(response)
-//            self.callrequest(episode: 2) { response in
-//                self.witchEpList.append(response)
-//                self.callrequest(episode: 3) { response in
-//                    self.witchEpList.append(response)
-//                    self.callrequest(episode: 4) { response in
-//                        self.witchEpList.append(response)
-//                        self.callrequest(episode: 5) { response in
-//                            self.witchEpList.append(response)
-//                            self.callrequest(episode: 6) { response in
-//                                self.witchEpList.append(response)
-//                                self.callrequest(episode: 7) { response in
-//                                    self.witchEpList.append(response)
-//                                    self.callrequest(episode: 8) { response in
-//                                        self.witchEpList.append(response)
-//                                        self.seasonWitchEpList.append(self.witchEpList)
-//                                        self.witchEpList.removeAll()
-//                                        self.callTworequest(episode: 1) { response in
-//                                            self.witchEpList.append(response)
-//                                            self.callTworequest(episode: 2) { response in
-//                                                self.witchEpList.append(response)
-//                                                self.callTworequest(episode: 3) { response in
-//                                                    self.witchEpList.append(response)
-//                                                    self.callTworequest(episode: 4) { response in
-//                                                        self.witchEpList.append(response)
-//                                                        self.callTworequest(episode: 5) { response in
-//                                                            self.witchEpList.append(response)
-//                                                            self.callTworequest(episode: 6) { response in
-//                                                                self.witchEpList.append(response)
-//                                                                self.callTworequest(episode: 7) { response in
-//                                                                    self.witchEpList.append(response)
-//                                                                    self.callTworequest(episode: 8) { response in
-//                                                                        self.witchEpList.append(response)
-//                                                                        self.seasonWitchEpList.append(self.witchEpList)
-//                                                                        self.witchEpList.removeAll()
-//                                                                        self.callThreerequest(episode: 1) { response in
-//                                                                            self.witchEpList.append(response)
-//                                                                            self.callThreerequest(episode: 2) { response in
-//                                                                                self.witchEpList.append(response)
-//                                                                                self.callThreerequest(episode: 3) { response in
-//                                                                                    self.witchEpList.append(response)
-//                                                                                    self.callThreerequest(episode: 4) { response in
-//                                                                                        self.witchEpList.append(response)
-//                                                                                        self.callThreerequest(episode: 5) { response in
-//                                                                                            self.witchEpList.append(response)
-//                                                                                            self.callThreerequest(episode: 6) { response in
-//                                                                                                self.witchEpList.append(response)
-//                                                                                                self.callThreerequest(episode: 7) { response in
-//                                                                                                    self.witchEpList.append(response)
-//                                                                                                    self.callThreerequest(episode: 8) { response in
-//                                                                                                        self.witchEpList.append(response)
-//                                                                                                        self.seasonWitchEpList.append(self.witchEpList)
-//                                                                                                        self.witchEpList.removeAll()
-//                                                                                                        print("seasonWitchEpList[0]",self.seasonWitchEpList[0].count)
-//                                                                                                        print("seasonWitchEpList[1]",self.seasonWitchEpList[1].count)
-//                                                                                                        print("seasonWitchEpList[2]",self.seasonWitchEpList[2].count)
-//                                                                                                        self.tmdbCollectionView.reloadData()
-//                                                                                                    }
-//                                                                                                }
-//                                                                                            }
-//                                                                                        }
-//                                                                                    }
-//                                                                                }
-//                                                                            }
-//                                                                        }
-//                                                                    }
-//                                                                }
-//                                                            }
-//                                                        }
-//                                                    }
-//                                                }
-//                                            }
-//                                        }
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-       
-        
-       
+
             for i in 0...2 {
                 for j in 1...8 {
                     self.callrequest(season: i+1, episode: j) { response in
@@ -167,28 +82,7 @@ class ViewController: UIViewController {
         }
 
     }
-    
-//    func callTworequest(episode: Int, completionHandler: @escaping (WitcherEpisode) -> Void ) {
-//        group.enter()
-//        WitcherManager.shared.callTwoRequest(episode: episode) { response in
-//            print("위치 시즌 2 : \(self.witchEpList)")
-//            completionHandler(response)
-//            self.tmdbCollectionView.reloadData()
-//            self.group.leave()
-//        }
-//    }
-//
-//    func callThreerequest(episode: Int, completionHandler: @escaping (WitcherEpisode) -> Void ) {
-//        group.enter()
-//        WitcherManager.shared.callThreeRequest(episode: episode) { response in
-//            print("위치 시즌 3 : \(self.witchEpList)")
-//            completionHandler(response)
-//            self.tmdbCollectionView.reloadData()
-//            self.group.leave()
-//        }
-//    }
-    
-    
+
 }
 
 extension ViewController : UICollectionViewDelegate {
@@ -222,7 +116,7 @@ extension ViewController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
-        let item = seasonWitchEpList[indexPath.section]
+        
         if seasonWitchEpList.count > 0 {
             switch indexPath.section {
             case 0:
