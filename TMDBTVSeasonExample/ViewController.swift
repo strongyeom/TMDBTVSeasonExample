@@ -110,18 +110,14 @@ class ViewController: UIViewController {
         
        
             for i in 0...2 {
-                self.witchEpList = []
-               
                 for j in 1...8 {
                     self.callrequest(season: i+1, episode: j) { response in
                         
-                            print("response",response)
                             self.witchEpList.append(response)
                             print("witchEpList",self.witchEpList)
-                            print("seasonWitchEpList1",self.seasonWitchEpList)
                             if j == 8 {
-                                print("seasonWitchEpList2",self.seasonWitchEpList)
                                 self.seasonWitchEpList.append(self.witchEpList)
+                                print("seasonWitchEpList2",self.seasonWitchEpList)
                                 self.witchEpList.removeAll()
                                 print("witchEpList 삭제",self.witchEpList)
                             }
@@ -131,16 +127,9 @@ class ViewController: UIViewController {
         
         group.notify(queue: .main) {
             
-            self.seasonWitchEpList.removeFirst()
             print("notify: seasonWitchEpList",self.seasonWitchEpList)
             self.tmdbCollectionView.reloadData()
         }
-        
-            print("Viewdidload \(seasonWitchEpList)")
-            self.seasonWitchEpList.append(self.witchEpList)
-            self.tmdbCollectionView.reloadData()
-            // dump(self.seasonWitchEpList)
-        
         
     }
     
