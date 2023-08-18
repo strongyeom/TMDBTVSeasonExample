@@ -15,8 +15,8 @@ class ViewController: UIViewController {
     var witchEpList: [WitcherEpisode] = []
     var seasonWitchEpList: [[WitcherEpisode]] = []
     // var season: Int = 1
-    
     let group = DispatchGroup()
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,6 +107,7 @@ class ViewController: UIViewController {
 //            }
 //        }
        
+        
        
             for i in 0...2 {
                 self.witchEpList = []
@@ -114,8 +115,6 @@ class ViewController: UIViewController {
                 for j in 1...8 {
                     self.callrequest(season: i+1, episode: j) { response in
                         
-                        self.group.notify(queue: .main) {
-                            
                             print("response",response)
                             self.witchEpList.append(response)
                             print("witchEpList",self.witchEpList)
@@ -123,18 +122,19 @@ class ViewController: UIViewController {
                             if j == 8 {
                                 print("seasonWitchEpList2",self.seasonWitchEpList)
                                 self.seasonWitchEpList.append(self.witchEpList)
-                                print("seasonWitchEpList3",self.seasonWitchEpList)
                                 self.witchEpList.removeAll()
                                 print("witchEpList 삭제",self.witchEpList)
-                                print("seasonWitchEpList4",self.seasonWitchEpList)
-                                self.tmdbCollectionView.reloadData()
                             }
-                            
-                        }
-                       
                     }
                 }
             }
+        
+        group.notify(queue: .main) {
+            
+            self.seasonWitchEpList.removeFirst()
+            print("notify: seasonWitchEpList",self.seasonWitchEpList)
+            self.tmdbCollectionView.reloadData()
+        }
         
             print("Viewdidload \(seasonWitchEpList)")
             self.seasonWitchEpList.append(self.witchEpList)
@@ -170,12 +170,11 @@ class ViewController: UIViewController {
     
     func callrequest(season: Int, episode: Int, completionHandler: @escaping (WitcherEpisode) -> Void) {
       
-        
+        group.enter()
         WitcherManager.shared.callRequest(season: season, episode: episode) { response in
-            DispatchQueue.main.async(group: self.group) {
-                completionHandler(response)
-            }
-           
+            
+            completionHandler(response)
+            self.group.leave()
         }
 
     }
@@ -210,12 +209,10 @@ extension ViewController : UICollectionViewDelegate {
 extension ViewController : UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        print("numberOfSections")
         return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("numberOfItemsInSection")
         if seasonWitchEpList.count > 2 {
                     switch section {
                     case 0:
@@ -237,7 +234,6 @@ extension ViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell else { return UICollectionViewCell() }
         let item = seasonWitchEpList[indexPath.section]
-        print("cellForItemAt")
         if seasonWitchEpList.count > 0 {
             switch indexPath.section {
             case 0:
